@@ -1,0 +1,214 @@
+<!doctype html>
+<html>
+<head>
+    <title>鲜檬摄影</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico" />
+    <link rel="stylesheet" href="../css/main.css"/>
+    <style>
+        @media (max-width: 750px) {
+            .footer{display: none;}
+        }
+    </style>
+    <script src="../lib/require.js"></script>
+    <script src="../js/web.js"></script>
+
+
+
+    <script>
+        require(['jquery','js/gobal'],function($,gobal){
+            var isHanimate = true,isFirst = true,isWxShare=true;  //是否执行大版网页动画
+            function main(){
+                if($(window).width()>750){
+                    if(isHanimate){ //执行大版网页动画，只执行一次，除非屏幕变小
+                        gobal.hAnimate();
+                        isHanimate = false;
+                    }
+                    if(isFirst){   //执行大版的内容只，会执行一次
+                        gobal.navdata();
+                        gobal.mMenu();
+                        isFirst = false;
+                    }
+                }else{
+                    isHanimate = true;  //重置大版网页动画
+                    gobal.moreShip();
+                    gobal.appTouch();
+                    if(isWxShare){
+                        gobal.wxShare();
+                        isWxShare = false;
+                    }
+
+                }
+            }
+            //立即下载
+            $('.index-h .down,.app-h .down').click(function(){
+                var h = $('.index-d .title').offset().top;  //+$('.index-d .title').height()
+                $('body,html').animate({scrollTop:h},500);
+            })
+            //相应屏幕的变化
+            $(window).resize(function(){
+                main();
+            })
+            main();
+        })
+    </script>
+</head>
+<body>
+    <div class="index-h">
+        <div class="nav">
+            <div class="logo"></div>
+        </div>
+
+        <div class="cont">
+            <div class="text">
+                <div class="h1">记录<p>最闪亮的瞬间</p></div>
+                <div class="down"></div>
+            </div>
+
+            <div class="animate">
+                <div class="big">
+                    <div class="xmin"><img src="../img/animate/animate-xmin.png"></div>
+                    <div class="xmid"><img src="../img/animate/animate-xmid.png"></div>
+                    <div class="xbig"><img src="../img/animate/animate-xbig.png"></div>
+                </div>
+                <div class="cm">
+                    <div class="min"><img src="../img/animate/animate-min.png"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="app-h">
+        <div class="img"><img src="../img/app/header.png"></div>
+        <div class="down"></div>
+    </div>
+
+    <div class="app-m">
+        <div class="tit">
+            <div class="img"><img src="../img/app/app-1.png"></div>
+            <div class="info">
+                <div class="con">
+                    <div class="dt">随时拍</div>
+                    <div class="dd">海量摄影团队遍布全球，自由点拍随时随地满足您的摄影需求</div>
+                </div>
+            </div>
+            <div class="info disNone">
+                <div class="con">
+                    <div class="dt">专业拍</div>
+                    <div class="dd">汇聚行业精英，提供基地支持，确保专业品质</div>
+                </div>
+            </div>
+            <div class="info disNone">
+                <div class="con">
+                    <div class="dt">安全拍</div>
+                    <div class="dd">严格的会员认证体系与交易保护政策，构筑安全的支付系统</div>
+                </div>
+            </div>
+            <div class="info disNone">
+                <div class="con">
+                    <div class="dt">省钱拍</div>
+                    <div class="dd">透明消费自主选择，告别影楼时代为您提供最优惠的旅拍服务</div>
+                </div>
+            </div>
+        </div>
+        <ul class="btn">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <div class="show">
+            <div class="img"><img src="../img/index-big.png"></div>
+            <div class="imgcont"><img src="../img/test/test-1.jpg"></div>
+        </div>
+    </div>
+
+    <div class="index-m-bg">
+        <div class="index-m">
+            <div class="show">
+                <div class="img"><img src="../img/test/test-1.jpg"></div>
+            </div>
+
+            <div class="text">
+                <div class="tit">
+                    <div class="h h2">随时拍</div>
+                    <div class="h h3">海量摄影团队遍布全球，自由点拍随时随地满足您的摄影需求</div>
+                </div>
+                <div class="tit disNone">
+                    <div class="h h2">专业拍</div>
+                    <div class="h h3">汇聚行业精英，提供基地支持，确保专业品质</div>
+                </div>
+                <div class="tit disNone">
+                    <div class="h h2">安全拍</div>
+                    <div class="h h3">严格的会员认证体系与交易保护政策，构筑安全的支付系统</div>
+                </div>
+                <div class="tit disNone">
+                    <div class="h h2">省钱拍</div>
+                    <div class="h h3">透明消费自主选择，告别影楼时代为您提供最优惠的旅拍服务</div>
+                </div>
+                <ul class="cont">
+                    <li class="hover">
+                        <div class="img">
+                            <div class="pic"><span class="li1"></span></div>
+                        </div>
+                        <p>随时拍</p>
+                    </li>
+                    <li>
+                        <div class="img">
+                            <div class="pic"><span class="li2"></span></div>
+                        </div>
+                        <p>专业拍</p>
+                    </li>
+                    <li>
+                        <div class="img">
+                            <div class="pic"><span class="li3"></span></div>
+                        </div>
+                        <p>安全拍</p>
+                    </li>
+                    <li>
+                        <div class="img">
+                            <div class="pic"><span class="li4"></span></div>
+                        </div>
+                        <p>省钱拍</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="index-d app-d">
+        <div class="title">
+            <div class="icon"><img src="../img/now-pic.png"></div>
+            <div class="img"><img src="../img/simoo-t.png"></div>
+            <div class="cont">立即下载APP</div>
+            <div class="info">点击二维码<br><span>下载APP</span></div>
+        </div>
+        <div class="li te">
+            <div class="erweima"><img src="../img/down-p.png"></div>
+            <div class="cont">
+                <div class="h1">
+                    <div class="pic"><img src="../img/down-woman.png"></div>
+                    <h2>用户端(即将开放)</h2>
+                </div>
+                <div class="h2">适应于各类旅拍需求的消费者</div>
+                <div class="p"><img src="../img/down-aroid-ios.png"></div>
+            </div>
+        </div>
+        <div class="li te-p">
+            <div class="erweima"><img src="../img/down-p.png"></div>
+            <div class="cont">
+                <div class="h1">
+                    <div class="pic"><img src="../img/down-man.png"></div>
+                    <h2>会员端</h2>
+                </div>
+                <div class="h2">适应于提供各类旅拍服务的专业技术人员</div>
+                <div class="p"><img src="../img/down-aroid-ios.png"></div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>
