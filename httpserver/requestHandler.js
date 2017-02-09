@@ -5,7 +5,7 @@ function upload(respon,pordata){
 	respon.writeHead(200, {"Content-Type": "text/plain"});
 	var type = typeof pordata;
 	console.log(querystring.parse(pordata));
-	respon.write(querystring.parse(pordata));
+	respon.write(querystring.parse(pordata).text);
 
 			respon.end();
 	console.log("upload");
@@ -24,14 +24,15 @@ function start(respon,pordata){
 	// 	})
 
 	var body = '<html>'+
-    '<head>'+
-    '<meta http-equiv="Content-Type" content="text/html; '+
-    'charset=UTF-8" />'+
+   '<head>'+
+    '<meta http-equiv="Content-Type" '+
+    'content="text/html; charset=UTF-8" />'+
     '</head>'+
     '<body>'+
-    '<form action="/upload" method="post">'+
-    '<textarea name="text" rows="20" cols="60"></textarea>'+
-    '<input type="submit" value="Submit text" />'+
+    '<form action="/upload" enctype="multipart/form-data" '+
+    'method="post">'+
+    '<input type="file" name="upload">'+
+    '<input type="submit" value="Upload file" />'+
     '</form>'+
     '</body>'+
     '</html>';
@@ -43,13 +44,13 @@ function start(respon,pordata){
 
 
 function show(response, postData){
-	fs.readFile("/tmp/01.png", "binary", function(error, file) {
+	fs.readFile("tmp/01.jpg", "binary", function(error, file) {
     if(error) {
       response.writeHead(500, {"Content-Type": "text/plain"});
       response.write(error + "\n");
       response.end();
     } else {
-      response.writeHead(200, {"Content-Type": "image/png"});
+      response.writeHead(200, {"Content-Type": "image/*"});
       response.write(file, "binary");
       response.end();
     }

@@ -8,7 +8,7 @@ http.createServer(function(req,res){
 		form.parse(req,function(err,fields,files){
 			res.writeHead(200,{'Content-Type':'text/plain'});
 			res.write("upload received\n\n");
-			res.end(util.inspect({fields:fields}));
+			res.end(util.inspect({fields:fields,files:files}));
 		})
 		return;
 	}
